@@ -20,3 +20,20 @@ func TestMultiplyByScalar(t *testing.T) {
 		t.Fatalf("Expected: %v, got: %v", expected, got)
 	}
 }
+
+func TestDotProductOfTwoPerpendicularVectors(t *testing.T) {
+	got := Vector{1., 0., 0.}.Dot(Vector{0., 1., 0.})
+	expected := 0.
+
+	if got != expected {
+		t.Fatalf("Expected: %v, Got: %v", expected, got)
+	}
+}
+func TestDotProductOfTwoParallelVectors(t *testing.T) {
+	got := Vector{1., 0., 0.}.Dot(Vector{1., 0., 0.})
+	expected := 1.
+
+	if got != expected {
+		t.Fatalf("Expected: %v, Got: %v", expected, got)
+	}
+}

@@ -26,3 +26,7 @@ func (a Vector) MultiplyByScalar(s float64) Vector {
 		Z: a.Z * s,
 	}
 }
+
+func (a Vector) Dot(b Vector) float64 {
+	return a.X*b.X + a.Y*b.Y + a.Z*b.Z
+}
