@@ -2,16 +2,17 @@ package renderer
 
 import (
 	"html/template"
-	"os"
+	"net/http"
 
 	"golang.org/x/exp/slog"
 )
 
+// we'll be drawing lines here
 func Renderer() {
 
 }
 
-func HtmlTemplate() {
+/*
 	tmpl, err := template.New("example").Parse(`
 			<html>
 			<head><title>{{.Title}}</head>
@@ -20,6 +21,14 @@ func HtmlTemplate() {
 			</body>
 		</html>
 		`)
+*/
+
+func HandleTemplate(w http.ResponseWriter, r *http.Request) {
+	const t = `
+		<h1><title>{{.Title}}</title></h1>
+		<body>{{.Message}}</body>`
+
+	tmpl, err := template.New("example").Parse(t)
 	if err != nil {
 		slog.Error("Couldn't render template", err)
 	}
@@ -28,13 +37,12 @@ func HtmlTemplate() {
 		Title   string
 		Message string
 	}{
-		Title:   "Go templates examplwe",
+		Title:   "zub",
 		Message: "oooooh we movin",
 	}
 
-	err = tmpl.Execute(os.Stdout, data)
+	err = tmpl.Execute(w, data)
 	if err != nil {
 		slog.Error("couldn't apply template", err)
 	}
-
 }
