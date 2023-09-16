@@ -26,6 +26,7 @@
           gopls
           go_1_21
           vscode-langservers-extracted 
+          air
         ];  
       }; 
     };
