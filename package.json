@@ -1,0 +1,5 @@
+{ "dependencies": { "@tailwindcss/typography": "^0.5.10" }, "name": "nature_of_code", "module": "index.ts", "type": "module", "devDependencies": {
+  "bun-types": "latest"
+}, "peerDependencies": {
+  "typescript": "^5.0.0"
+} }

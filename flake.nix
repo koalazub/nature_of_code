@@ -26,6 +26,7 @@
           air
           go_1_21
           gotools
+          gopls
           vscode-langservers-extracted 
           nodePackages_latest.tailwindcss
           bun
