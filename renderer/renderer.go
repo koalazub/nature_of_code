@@ -26,20 +26,22 @@ type data struct {
 
 func HandleIndex(w http.ResponseWriter, r *http.Request) {
 
-	tmpl, err := template.ParseFiles("index.html")
-	if err != nil {
-		slog.Error("There was an error reading the file", "err", err)
-	}
-
 	d := data{
 		Title:   "Rendar",
-		Heading: "Here is Rendaaar",
+		Heading: "Here is Rendar",
 		Body:    "Where we try to learn maths and rendering in one hot hit",
+	}
+
+	tmpl, err := template.ParseFiles("./index.html")
+	if err != nil {
+		slog.Error("There was an error reading the file", "err", err)
+		return
 	}
 
 	err = tmpl.Execute(w, d)
 	if err != nil {
 		slog.Error("Couldn't render the page", err)
+		return
 	}
 }
 
@@ -51,12 +53,13 @@ func HandleTemplate(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.New("example").Parse(t)
 	if err != nil {
 		slog.Error("Couldn't render template", err)
+		return
 	}
 
 	d := data{
 		Title:   "zub",
 		Heading: "OOOOOOH",
-		Body:    " we movin",
+		Body:    "we movin",
 	}
 
 	err = tmpl.Execute(w, d)
@@ -69,8 +72,7 @@ func init() {
 
 	page = template.New("main")
 
-	page = template.Must(page.Parse(`<!DOCTYPE html>
-	
+	page = template.Must(page.Parse(`<!DOCTYPE html> 
 	<html>
 	<head>
 		<script src="https://unpkg.com/htmx.org@1.8.0"></script>

@@ -23,11 +23,13 @@
 
       devShells.default = pkgs.mkShell {
         nativeBuildInputs = with pkgs; [
-          gopls
-          go_1_21
-          vscode-langservers-extracted 
           air
-        ];  
+          go_1_21
+          gotools
+          vscode-langservers-extracted 
+          nodePackages_latest.tailwindcss
+          bun
+        ] ++ (with pkgs.nodePackages; [ tailwindcss ]);  
       }; 
     };
   };
