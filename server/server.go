@@ -17,7 +17,7 @@ func New() {
 
 	http.HandleFunc("/static", r.HandleTemplate)
 	http.HandleFunc("/", r.HandleIndex)
-	http.HandleFunc("/template", r.HandleFragment)
+	http.HandleFunc("/vector", r.HandleVectorCanvas)
 	http.ListenAndServe(addr, nil)
 	os.Exit(1)
 }
